@@ -1,11 +1,8 @@
-const jwt = require('jsonwebtoken')
-const generateToken= async (data)=>{
-   try{
-      const token = jwt.sign(data,process.env.JWT_SECRET,{expiresIn : "7d"})
-       return token;
-   } catch(error){
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-   }
-}
+const generateToken =async (data) => {
+  return jwt.sign(data, process.env.JWT_SECRET);
+};
 
 module.exports = generateToken;
