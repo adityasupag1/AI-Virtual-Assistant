@@ -1,0 +1,42 @@
+import React, { use } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import Home from "./pages/Home";
+import Customize from "./pages/Customize";
+import { useContext } from "react";
+import { userDataContext } from "./context/userContext";
+import Customize2 from "./pages/Customize2";
+
+const App = () => {
+  const {userData, setUserData,loading} = useContext(userDataContext)
+ 
+
+if (loading) {
+  return null; // or spinner
+}
+
+
+
+
+	return (
+		<div>
+			<Routes>
+
+				<Route path="/" element={(userData?.assistantImage && userData?.assistantName) ? <Home /> : <Navigate  to ={'/customize'}/>} />
+
+				<Route path="/signup" element={!userData?<SignUp /> : <Navigate  to ={'/customize'}/>} />
+				
+				<Route path="/signin" element={!userData?<SignIn /> : <Navigate  to ={'/'}/>} />
+				
+				<Route path="/customize" element={userData?<Customize /> : <Navigate  to ={'/signup'}/>}
+				/>
+				
+				<Route path="/customize2" element={userData?<Customize2 /> : <Navigate  to ={'/signup'}/>}
+				/>
+			</Routes>
+		</div>
+	);
+};
+
+export default App;
