@@ -21,9 +21,19 @@ const userSchema = new mongoose.Schema({
   assistantImage :{
     type : String
   },
-  history : {
-    type: String,
+  history: [
+  {
+    command: {
+      type: String,
+      required: true
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now
+    }
   }
+]
+
 }, {timestamps : true})
 
 const userModel = mongoose.model("user", userSchema);

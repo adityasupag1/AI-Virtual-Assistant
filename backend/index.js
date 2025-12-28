@@ -13,7 +13,8 @@ const port = process.env.PORT || 5000
 const app = express()
 const authRouter= require('./routes/authRouter');
 const userRouter = require("./routes/userRouter");
-const geminiResponse = require('./gemini')
+const geminiResponse = require('./gemini');
+const { property } = require("lodash");
 //Middlewares
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -29,7 +30,7 @@ app.use(
 
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
-
+ 
 app.listen(port,()=>{
   console.log("server is running ")
 })
