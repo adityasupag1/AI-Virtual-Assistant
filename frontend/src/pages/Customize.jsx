@@ -11,7 +11,7 @@ import { RiImageAddLine } from "react-icons/ri";
 import { IoMdArrowBack } from "react-icons/io";
 
 import { useRef } from "react";
-import { userDataContext } from "../context/userContext";
+import { userDataContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const images = [image1, image2, image3, image4, image5, image6, image7];
