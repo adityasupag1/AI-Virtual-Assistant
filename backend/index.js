@@ -23,7 +23,7 @@ app.use(cookieParser())
 // ✅ CORS CONFIG (THIS FIXES YOUR ERROR)
 app.use(
   cors({
-    origin: "https://ai-virtual-assistant-rl12.onrender.com/", // Vite frontend
+    origin: "https://ai-virtual-assistant-rl12.onrender.com", // Vite frontend
     credentials: true
   })
 );
