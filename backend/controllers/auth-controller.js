@@ -7,12 +7,11 @@ const generateToken = require("../utils/token");
 // Helps avoid duplication and mistakes
 const COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: false,
-  sameSite: "lax",
-  path: "/",          // 🔥 REQUIRED
-  maxAge: 7 * 24 * 60 * 60 * 1000
+  secure: process.env.NODE_ENV === "production", // true on Render
+  sameSite: "none",                              // required for cross-domain
+  path: "/",
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 };
-
 /**
  * =========================
  * SIGNUP CONTROLLER
